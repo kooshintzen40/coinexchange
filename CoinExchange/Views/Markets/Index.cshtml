@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CoinExchange.Models.Database.Model.CoinInfo>
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <script src="~/js/markets.js" asp-append-version="true"></script>
+</head>
+
+
+<h1>Index</h1>
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card" style="display: inline-block;">
+            <table class="card-table table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.symbol)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.market_data.current_price.eur)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model)
+                    {
+                        <tr>
+                            <td>@s.name</td>
+                            <td>@s.symbol</td>
+                            <td id="coin_currency">@s.market_data.current_price.eur</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card" style=" width: auto; height: auto;" id="graphContainer">
+            <canvas id="coinChart"></canvas>
+        </div>
+        <div class="card-footer">
+            <form name="dropdown">
+                <select name="id" id="Coins" method="post">
+                    @foreach (var c in Model)
+                    {
+                        <option value="@c.id">@c.name</option>
+                    }
+                </select>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@model CoinExchange.Models.Database.Model.Transaction
+
+<head>
+    <script src="~/js/transactions.js" asp-append-version="true"></script>
+</head>
+<body>
+    <h1>Create Trades</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div class="card-trade">
+                <form asp-action="Trade" method="post">
+                    <div class="card-header text-center">
+                        <select name="CoinName" class="transaction-dropdownlist" id="transaction-dropdownlist-buy"></select><br /><br />
+                        <label asp-for="Wallet" class="coin-label">Wallet name</label>
+                        <select name="WalletID" asp-for="Wallet" asp-items="ViewBag.WalletID" class="transaction-dropdownlist-account"></select>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="coin-label">Coin Price</label>
+                            <input name="Price" class="form-control" id="trade-coin-price-buy" placeholder="Price" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label class="coin-label">Coin Amount</label>
+                            <input name="Quantity" type="number" min="0" class="form-control" id="trade-coin-amount-buy" placeholder="Amount" />
+                        </div>
+                        <div class="col text-center">
+                            <button name="Action" value="Buy" type="submit" class="trade-coin-button" id="trade-coin-buy">Buy</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div class="card-trade">
+                <form asp-action="Trade" method="post">
+                    <div class="card-header text-center">
+                        <select name="CoinName" class="transaction-dropdownlist" id="transaction-dropdownlist-sell"></select><br /><br />
+                        <label asp-for="Wallet" class="coin-label">Account name</label>
+                        <select name="WalletID" asp-for="Wallet" asp-items="ViewBag.WalletID" class="transaction-dropdownlist-account"></select>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="coin-label">Coin Price</label>
+                            <input name="Price" class="form-control" id="trade-coin-price-sell" placeholder="Price" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label class="coin-label">Coin Amount</label>
+                            <input name="Quantity" type="number" min="0" class="form-control" id="trade-coin-amount-sell" placeholder="Amount" />
+                        </div>
+                        <div class="col text-center">
+                            <button name="Action" value="Sell" type="submit" class="trade-coin-button" id="trade-coin-sell">Sell</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
